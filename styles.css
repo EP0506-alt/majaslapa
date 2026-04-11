@@ -1,9 +1,210 @@
-
-body{
-    background-color: #f0ead2ff;
+html {
+  scroll-behavior: smooth;
 }
-header{
-    background-color: #adc178ff ;
+body {
+ font-family: "Amarante", serif;
+ background-color: #f0ead2ff;
+}
+:root {
+--tea-green: #dde5b6ff;
+--muted-olive: #adc178ff;
+--faded-copper: #a98467ff;
+--ash-brown: #6c584cff;
+  --forest: #2D5652;
+  --gold: #E2A54D;
+  --aqua: #97D3CD;
+  --bg: hsl(60, 17%, 98%);
+  --muted: #5a5550;
+  --border: #ddd5cb;
+  --header-h: 62px;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  height: var(--header-h);
+  background-color: var(--muted-olive) ;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.header-nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(239, 234, 230, .72);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 20px;
+  transition: background .15s, color .15s;
+}
+.header-nav a:hover {
+  background: rgba(151, 211, 205, .12);
+  color: var(--aqua);
+}
+.header-nav a.active {
+  color: var(--gold);
+}
+.carousel-section {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.sb {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 40px 32px 40px 0;
+}
+.carousel-main {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 0 40px 40px;
+  border-left: 1px solid var(--border);
+}
+.sb-section {
+  margin-bottom: 36px;
+}
+.sb-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ash-brown);
+  letter-spacing: .5px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+}
+.sb-item {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--ash-brown);
+  line-height: 1.5;
+  cursor: pointer;
+  transition: color .15s;
+}
+.sb-item:hover {
+  color: var(--forest);
+}
+.sb-item strong {
+  display: block;
+  font-size: 13px;
+  color: var(--ash-brown);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.sb-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 4px;
+}
+.chip-gold {
+  background: rgba(226, 165, 77, .15);
+  color: #7a4a00;
+}
+.chip-green {
+  background: var(--tea-green);
+  color: var(--forest);
+}
+.chip-red {
+  background: rgba(180, 60, 40, .1);
+  color: #8b2a20;
+}
+.carousel-wrap {
+  margin-bottom: 52px;
+}
+.carousel-label {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--forest);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--tea-green);
+}
+.carousel-track {
+  display: flex;
+  transition: transform .45s cubic-bezier(.4, 0, .2, 1);
+}
+.carousel-slide {
+  min-width: 100%;
+  display: flex; 
+    padding: 0;
+  min-height: 260px;
+  position: relative;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+.slide-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ash-brown);
+  color: var(--tea-green);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s;
+  z-index: 5;
+  opacity: .85;
+}
+.carousel-btn:hover {
+  background: var(--forest);
+  opacity: 1;
+}
+.carousel-btn.prev {
+  left: 14px;
+}
+.carousel-btn.next {
+  right: 14px;
+}
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.dot.active {
+  background: var(--gold);
+  transform: scale(1.25);
 }
 footer{
     background-color: #adc178ff ;
