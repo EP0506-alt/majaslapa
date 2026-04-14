@@ -58,8 +58,6 @@ header {
 .header-nav a.active {
     color: var(--gold);
 }
-footer{
-    background-color: #adc178ff ;
 }
 h1{
      font-family: "Akaya Telivigala", system-ui;
