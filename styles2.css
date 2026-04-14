@@ -1,8 +1,62 @@
-body{
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Amarante", serif;
     background-color: #f0ead2ff;
 }
-header{
-    background-color: #adc178ff ;
+
+:root {
+    --tea-green: #dde5b6ff;
+    --muted-olive: #adc178ff;
+    --faded-copper: #a98467ff;
+    --ash-brown: #6c584cff;
+    --forest: #2D5652;
+    --gold: #E2A54D;
+    --aqua: #97D3CD;
+    --bg: hsl(60, 17%, 98%);
+    --muted: #5a5550;
+    --border: #ddd5cb;
+    --header-h: 62px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 300;
+    height: var(--header-h);
+    background-color: var(--muted-olive);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.header-nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(239, 234, 230, .72);
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 20px;
+    transition: background .15s, color .15s;
+}
+
+.header-nav a:hover {
+    background: rgba(151, 211, 205, .12);
+    color: var(--aqua);
+}
+
+.header-nav a.active {
+    color: var(--gold);
 }
 footer{
     background-color: #adc178ff ;
