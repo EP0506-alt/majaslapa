@@ -245,6 +245,53 @@ header {
   transform: scale(1.25);
 }
 
+.lower-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 40px 60px;
+  border-top: 1px solid var(--border);
+}
+
+.body-text-section {
+  margin-bottom: 52px;
+}
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--forest);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.section-heading {
+  font-family: "Amarante", serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var( --ash-brown);
+  margin-bottom: 16px;
+}
+
+.body-text {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+.hover-highlight {
+  background: rgba(226, 165, 77, .18);
+  border-radius: 2px;
+  padding: 0 3px;
+  cursor: default;
+  transition: background .15s;
+}
+
+.hover-highlight:hover {
+  background: rgba(226, 165, 77, .35);
+}
+
 footer {
   background-color: #adc178ff;
 }
