@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <title>Spēle</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Amarante&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Amarante&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles2.css">
 </head>
 
 <body>
-<header>
+  <header>
     <a>
       <h1>SPĒLE</h1>
     </a>
@@ -20,64 +20,68 @@
       <a href="game.html">Spēle</a>
     </nav>
   </header>
-<div class="top">
-  <div class="top-bg"></div>
-  <div class="top-fade"></div>
-  <div class="top-content">
-    <div class="top-eyebrow">Minispēle</div>
-    <p class="top-sub">Savieto visus gabaliņus, lai atjaunotu gleznu</p>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<div class="win-overlay" id="win-overlay">
-  <div class="win-card">
-    <div class="win-title">Glezna pabeigta!</div>
-    <div class="win-sub">Laiks:</div>
-    <div class="win-time" id="win-time">0:00</div>
-    <div class= "game">
-      <button class="btn btn-primary" onclick="closeWin();newGame()">Spēlēt vēlreiz</button>
-      <button class="btn btn-secondary" onclick="closeWin()">Aizvērt</button>
+  <div class="top">
+    <div class="top-content">
+      <div>Minispēle</div>
+      <p class="top-sub">Savieto visus gabaliņus, lai atjaunotu gleznu</p>
     </div>
   </div>
-</div>
 
-<div class="game-shell">
-  <div class="controls">
-    <span class="ctrl-label">Grūtība:</span>
-    <select id="difficulty" onchange="newGame()">
-      <option value="3">Viegla (3×3)</option>
-      <option value="4" selected>Vidēja (4×4)</option>
-      <option value="5">Grūta (5×5)</option>
-    </select>
-    <button class="btn btn-primary" onclick="newGame()"> Jauna spēle</button>
+  <div class="toast" id="toast"></div>
+
+  <div class="win-overlay" id="win-overlay">
+    <div class="win-card">
+      <div class="win-title">Glezna pabeigta!</div>
+      <div class="win-sub">Laiks:</div>
+      <div class="win-time" id="win-time">0:00</div>
+      <div class="game">
+        <button class="btn btn-primary" onclick="closeWin();newGame()">Spēlēt vēlreiz</button>
+        <button class="btn btn-secondary" onclick="closeWin()">Aizvērt</button>
+      </div>
+    </div>
   </div>
 
-  <div class="stats">
-    <div class="stat"><div class="stat-val" id="stat-time">0:00</div><div class="stat-lbl">Laiks</div></div>
-    <div class="stat"><div class="stat-val" id="stat-moves">0</div><div class="stat-lbl">Gājieni</div></div>
+  <div class="game-shell">
+    <div class="controls">
+      <span class="ctrl-label">Grūtība:</span>
+      <select id="difficulty" onchange="newGame()">
+        <option value="3">Viegla (3×3)</option>
+        <option value="4" selected>Vidēja (4×4)</option>
+        <option value="5">Grūta (5×5)</option>
+      </select>
+      <button class="btn btn-primary" onclick="newGame()"> Jauna spēle</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val" id="stat-time">0:00</div>
+        <div class="stat-lbl">Laiks</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" id="stat-moves">0</div>
+        <div class="stat-lbl">Gājieni</div>
+      </div>
+    </div>
+
+    <div class="puzzle-area">
+
+      <div class="preview-wrap">
+        <div class="preview-label">Oriģināls</div>
+        <div id="preview"><img id="preview-img" src="" alt="Preview" /></div>
+      </div>
+
+      <div class="board-wrap">
+        <div class="board-label">Puzle dēlis</div>
+        <div id="board"></div>
+      </div>
+
+      <div class="tray-wrap">
+        <div class="tray-label">Gabaliņi</div>
+        <div id="tray"></div>
+      </div>
+
+    </div>
   </div>
-
-  <div class="puzzle-area">
-
-    <div class="preview-wrap">
-      <div class="preview-label">Oriģināls</div>
-      <div id="preview"><img id="preview-img" src="" alt="Preview"/></div>
-    </div>
-
-    <div class="board-wrap">
-      <div class="board-label">Puzle dēlis</div>
-      <div id="board"></div>
-    </div>
-
-    <div class="tray-wrap">
-      <div class="tray-label">Gabaliņi</div>
-      <div id="tray"></div>
-    </div>
-
-  </div>
-</div>
 
 
 
@@ -88,7 +92,7 @@
 
 
   <footer>
-    
+
   </footer>
   <script src="game.js"></script>
 </body>
