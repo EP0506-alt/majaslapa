@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="lv" dir="ltr">
 
 <head>
   <meta charset="utf-8">
@@ -20,23 +20,22 @@
       <a href="game.html">Spēle</a>
     </nav>
   </header>
+
   <div class="top">
     <div class="top-content">
       <div>Minispēle</div>
       <p class="top-sub">Savieto visus gabaliņus, lai atjaunotu gleznu</p>
-       <div>
-    <form>
-    <label>Uzraksti gleznas nosaukumu: </label>
-    <input type="text" id="glezna">
-    <br>
-    <input type="radio" name="gads" id="g10">1900
-    <input type="radio" name="gads" id="g18">1898
-    <input type="radio" name="gads" id="g14">1904
-    <button type="button" class="btn btn-primary" onclick="year()">Pārbaudi</button>
-  </form>
-  <h2 id="answer"></h2>
-  </div>
-  
+      <div class="quiz-form">
+        <label for="glezna">Uzraksti gleznas nosaukumu:</label>
+        <input type="text" id="glezna" placeholder="Gleznas nosaukums...">
+        <div class="quiz-radio-group">
+          <label><input type="radio" name="gads" id="g18"> 1898</label>
+          <label><input type="radio" name="gads" id="g10"> 1900</label>
+          <label><input type="radio" name="gads" id="g14"> 1904</label>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="year()">Pārbaudi</button>
+        <h2 id="answer"></h2>
+      </div>
     </div>
   </div>
 
@@ -62,7 +61,7 @@
         <option value="4" selected>Vidēja (4×4)</option>
         <option value="5">Grūta (5×5)</option>
       </select>
-      <button class="btn btn-primary" onclick="newGame()"> Jauna spēle</button>
+      <button class="btn btn-primary" onclick="newGame()">Jauna spēle</button>
     </div>
 
     <div class="stats">
@@ -81,22 +80,18 @@
     </div>
 
     <div class="puzzle-area">
-
       <div class="preview-wrap">
         <div class="preview-label">Oriģināls</div>
-        <div id="preview"><img id="preview-img" src="240555.webp" /></div>
+        <div id="preview"><img id="preview-img" src="240555.webp" alt="Oriģinālā glezna" /></div>
       </div>
-
       <div class="board-wrap">
         <div class="board-label">Puzle dēlis</div>
         <div id="board"></div>
       </div>
-
       <div class="tray-wrap">
         <div class="tray-label">Gabaliņi</div>
         <div id="tray"></div>
       </div>
-
     </div>
   </div>
 
