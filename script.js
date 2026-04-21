@@ -1,23 +1,25 @@
+// ── Quiz (game.html top section) ─────────────────────────────────────────────
 function year() {
-    const name = document.getElementById("glezna").value;
-    const correctName = name === "Mākslinieka dārzs Živernī";
-    const correctYear = document.getElementById("g10").checked;
-    const anyYear = correctYear || document.getElementById("g18").checked || document.getElementById("g14").checked;
+  const name = document.getElementById('glezna').value.trim();
+  const correctName = name === 'Mākslinieka dārzs Živernī';
+  const correctYear = document.getElementById('g10').checked;
+  const anyYear = document.getElementById('g10').checked
+    || document.getElementById('g18').checked
+    || document.getElementById('g14').checked;
 
-    if (!anyYear) {
-        document.getElementById("answer").innerHTML = "Tev nav norādīts gads";
-        return;
-    }
+  if (!anyYear) {
+    document.getElementById('answer').textContent = 'Tev nav norādīts gads';
+    return;
+  }
 
-    if (correctName && correctYear) {      document.getElementById("answer").innerHTML = "Viss pareizi!"}
-    else if (correctName && !correctYear) {document.getElementById("answer").innerHTML = "Pareizs nosaukums, bet nepareizs gads."}
-    else if (!correctName && correctYear) {document.getElementById("answer").innerHTML = "Pareizs gads, bet nepareizs nosaukums."}
-    else                                  {document.getElementById("answer").innerHTML = "Viss NEpareizi!"}
+  if (correctName && correctYear) {document.getElementById('answer').textContent = 'Viss pareizi!'
+  }else if (correctName && !correctYear) {document.getElementById('answer').textContent = 'Pareizs nosaukums, bet nepareizs gads.'
+  }else if (!correctName && correctYear) {document.getElementById('answer').textContent = 'Pareizs gads, bet nepareizs nosaukums.'
+  }else {document.getElementById('answer').textContent = 'Viss NEpareizi!'}
 }
 
-
-const IMAGE = "240555.webp"
-const PIECE_SIZE_MAP = { 3: 130, 4: 100, 5: 80 }
+const IMAGE = '240555.webp';
+const PIECE_SIZE_MAP = { 3: 130, 4: 100, 5: 80 };
 
 let grid, moves, startTime, timerInterval;
 
@@ -27,23 +29,25 @@ const placed = () => document.querySelectorAll('.piece.correct').length;
 
 function newGame() {
   clearInterval(timerInterval);
-  moves = 0; startTime = null;
+  moves = 0;
+  startTime = null;
   updateStats();
 
   const d = diff(), size = ps(), dim = d * size;
-  const src = document.createElement('canvas');
-  src.width = dim; src.height = dim;
+  const canvas = document.createElement('canvas');
+  canvas.width = dim;
+  canvas.height = dim;
 
   const img = new Image();
   img.crossOrigin = 'anonymous';
+
   img.onload = () => {
-    src.getContext('2d').drawImage(img, 0, 0, dim, dim);
+    canvas.getContext('2d').drawImage(img, 0, 0, dim, dim);
     document.getElementById('preview-img').src = IMAGE;
-    buildPuzzle(src, d, size, dim);
+    buildPuzzle(canvas, d, size, dim);
   };
-  img.onerror = () => buildPuzzle(src, d, size, dim);
+  img.onerror = () => buildPuzzle(canvas, d, size, dim);
   img.src = IMAGE;
-  if (img.complete) img.onload();
 }
 
 function buildPuzzle(src, d, size, dim) {
@@ -58,14 +62,18 @@ function buildPuzzle(src, d, size, dim) {
       const slot = document.createElement('div');
       slot.className = 'slot';
       slot.style.cssText = `left:${c * size}px;top:${r * size}px;width:${size}px;height:${size}px;`;
-      slot.dataset.row = r; slot.dataset.col = c;
+      slot.dataset.row = r;
+      slot.dataset.col = c;
       board.appendChild(slot);
+
       slot.addEventListener('dragover', e => { e.preventDefault(); slot.classList.add('drag-over'); });
       slot.addEventListener('dragleave', () => slot.classList.remove('drag-over'));
       slot.addEventListener('drop', e => {
-        e.preventDefault(); slot.classList.remove('drag-over');
+        e.preventDefault();
+        slot.classList.remove('drag-over');
         tryPlace(e.dataTransfer.getData('pieceId'), r, c);
       });
+
       return { slot, filled: false };
     })
   );
@@ -76,8 +84,10 @@ function buildPuzzle(src, d, size, dim) {
 
   shuffle([...Array(d * d).keys()]).forEach(idx => {
     const pr = Math.floor(idx / d), pc = idx % d;
+
     const tile = document.createElement('canvas');
-    tile.width = size; tile.height = size;
+    tile.width = size;
+    tile.height = size;
     tile.getContext('2d').drawImage(src, pc * size, pr * size, size, size, 0, 0, size, size);
 
     const piece = document.createElement('div');
@@ -90,7 +100,8 @@ function buildPuzzle(src, d, size, dim) {
 
     const img = document.createElement('img');
     img.src = tile.toDataURL();
-    img.width = size; img.height = size;
+    img.width = size;
+    img.height = size;
     piece.appendChild(img);
 
     piece.addEventListener('dragstart', e => {
@@ -99,6 +110,7 @@ function buildPuzzle(src, d, size, dim) {
       startTimer();
     });
     piece.addEventListener('dragend', () => piece.classList.remove('dragging'));
+
     addTouch(piece);
     tray.appendChild(piece);
   });
@@ -106,7 +118,8 @@ function buildPuzzle(src, d, size, dim) {
   tray.addEventListener('dragover', e => { e.preventDefault(); tray.classList.add('drag-over'); });
   tray.addEventListener('dragleave', () => tray.classList.remove('drag-over'));
   tray.addEventListener('drop', e => {
-    e.preventDefault(); tray.classList.remove('drag-over');
+    e.preventDefault();
+    tray.classList.remove('drag-over');
     returnToTray(e.dataTransfer.getData('pieceId'));
   });
 }
@@ -120,6 +133,14 @@ function tryPlace(pieceId, row, col) {
     const or = +piece.dataset.boardRow, oc = +piece.dataset.boardCol;
     grid[or][oc].filled = false;
     grid[or][oc].slot.classList.remove('filled');
+    piece.classList.remove('correct');
+  }
+
+  if (grid[row][col].filled) {
+    const occupant = document.querySelector(
+      `.piece[data-board-row="${row}"][data-board-col="${col}"]`
+    );
+    if (occupant) returnToTray(occupant.id);
   }
 
   piece.style.cssText = `position:absolute;left:${col * size}px;top:${row * size}px;width:${size}px;height:${size}px;`;
@@ -143,8 +164,12 @@ function returnToTray(pieceId) {
   if (!piece) return;
   if (piece.dataset.boardRow !== undefined) {
     const r = +piece.dataset.boardRow, c = +piece.dataset.boardCol;
-    grid[r]?.[c] && (grid[r][c].filled = false, grid[r][c].slot.classList.remove('filled'));
-    delete piece.dataset.boardRow; delete piece.dataset.boardCol;
+    if (grid[r]?.[c]) {
+      grid[r][c].filled = false;
+      grid[r][c].slot.classList.remove('filled');
+    }
+    delete piece.dataset.boardRow;
+    delete piece.dataset.boardCol;
     piece.classList.remove('correct');
   }
   piece.style.cssText = `width:${ps()}px;height:${ps()}px;position:relative;`;
@@ -154,6 +179,7 @@ function returnToTray(pieceId) {
 
 function addTouch(piece) {
   let clone;
+
   piece.addEventListener('touchstart', e => {
     const t = e.touches[0], size = ps();
     clone = piece.cloneNode(true);
@@ -165,11 +191,15 @@ function addTouch(piece) {
   piece.addEventListener('touchmove', e => {
     e.preventDefault();
     const t = e.touches[0], size = ps();
-    if (clone) { clone.style.left = (t.clientX - size / 2) + 'px'; clone.style.top = (t.clientY - size / 2) + 'px'; }
+    if (clone) {
+      clone.style.left = (t.clientX - size / 2) + 'px';
+      clone.style.top = (t.clientY - size / 2) + 'px';
+    }
   }, { passive: false });
 
   piece.addEventListener('touchend', e => {
-    clone?.remove(); clone = null;
+    clone?.remove();
+    clone = null;
     const el = document.elementFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
     const slot = el?.closest('.slot');
     if (slot) tryPlace(piece.id, +slot.dataset.row, +slot.dataset.col);
@@ -180,25 +210,37 @@ function addTouch(piece) {
 function checkWin() {
   if (placed() < diff() * diff()) return;
   clearInterval(timerInterval);
-  document.getElementById('win-time').textContent = formatTime(startTime ? Math.floor((Date.now() - startTime) / 1000) : 0);
+  document.getElementById('win-time').textContent =
+    formatTime(startTime ? Math.floor((Date.now() - startTime) / 1000) : 0);
   setTimeout(() => document.getElementById('win-overlay').classList.add('show'), 400);
 }
-function closeWin() { document.getElementById('win-overlay').classList.remove('show'); }
+
+function closeWin() {
+  document.getElementById('win-overlay').classList.remove('show');
+}
 
 function startTimer() {
   if (startTime) return;
   startTime = Date.now();
   timerInterval = setInterval(() => {
-    document.getElementById('stat-time').textContent = formatTime(Math.floor((Date.now() - startTime) / 1000));
+    document.getElementById('stat-time').textContent =
+      formatTime(Math.floor((Date.now() - startTime) / 1000));
   }, 1000);
 }
-function formatTime(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
-function updateStats() { document.getElementById('stat-moves').textContent = moves; }
+
+function formatTime(s) {
+  return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+}
+
+function updateStats() {
+  document.getElementById('stat-moves').textContent = moves;
+}
 
 let toastTimer;
 function toast(msg) {
   const el = document.getElementById('toast');
-  el.textContent = msg; el.classList.add('show');
+  el.textContent = msg;
+  el.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => el.classList.remove('show'), 1600);
 }
