@@ -1,3 +1,21 @@
+function year() {
+    const correctName = document.getElementById("glezna").value
+      if (correctName == "Mākslinieka dārzs Živernī") {
+        const yes = "Pareizs nosaukums"
+    } else {
+        const no = "Nepareizs nosaukums"
+    }
+   if (document.getElementById("g10").checked) {
+        const yearYes = "Pareizais gads"
+    } else if (document.getElementById("g18").checked or document.getElementById("g14").checked) {
+        const yearNot = "Nepareizais gads"
+    } else {
+        const kl = "tev nav norādīts gads"
+    }
+    document.getElementById("c").innerHTML = "Tev ir " + b + ". tavas krāsas kods ir " + i
+}
+
+
 const IMAGE = "240555.webp"
 const PIECE_SIZE_MAP = { 3: 130, 4: 100, 5: 80 }
 
