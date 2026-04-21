@@ -17,12 +17,13 @@ body {
   --muted: #5a5550;
   --border: #ddd5cb;
   --header-h: 62px;
+  --fg: #2D5652;
 }
- 
+
 h1 {
   font-family: "Akaya Telivigala", system-ui;
   font-weight: 400;
-  font-style: bold;
+  font-style: normal;
 }
 
 header {
@@ -39,7 +40,7 @@ header {
 }
 
 .header-nav {
-   display: flex;
+  display: flex;
   align-items: center;
   gap: 4px;
   margin-left: auto;
@@ -66,7 +67,7 @@ header {
 
 .top {
   position: relative;
-  height: 200px;
+  min-height: 200px;
   overflow: hidden;
   flex-shrink: 0;
   margin-top: var(--header-h);
@@ -81,14 +82,73 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 24px 28px;
+  padding: 28px 24px 24px;
 }
 
-
 .top-sub {
-  font-size: 20px;
-  color:var(--ash-brown);
+  font-size: 18px;
+  color: var(--ash-brown);
   margin-top: 8px;
+}
+
+.quiz-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: rgba(108, 88, 76, .08);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.quiz-form label {
+  font-size: 14px;
+  color: var(--ash-brown);
+}
+
+.quiz-form input[type="text"] {
+  font-family: "Amarante", serif;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--ash-brown);
+  width: 100%;
+  max-width: 320px;
+  outline: none;
+  transition: border-color .15s;
+}
+
+.quiz-form input[type="text"]:focus {
+  border-color: var(--faded-copper);
+}
+
+.quiz-radio-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quiz-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ash-brown);
+}
+
+#answer {
+  font-size: 15px;
+  color: var(--fg);
+  min-height: 1.5em;
 }
 
 .game-shell {
@@ -126,6 +186,7 @@ select {
   outline: none;
   transition: border-color .15s;
 }
+
 select:focus {
   border-color: var(--bg);
 }
@@ -147,7 +208,6 @@ select:focus {
   background: var(--faded-copper);
   color: var(--bg);
 }
-
 
 .btn-primary:hover {
   background: var(--ash-brown);
@@ -365,15 +425,8 @@ select:focus {
 }
 
 @keyframes popIn {
-  from {
-    transform: scale(.7);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from { transform: scale(.7); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
 }
 
 .win-title {
@@ -388,14 +441,14 @@ select:focus {
 }
 
 .win-time {
-
   font-size: 32px;
   font-weight: 700;
   color: var(--bg);
 }
 
-h1 {
-  font-family: "Akaya Telivigala", system-ui;
-  font-weight: 400;
-  font-style: normal;
+.game {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
