@@ -1,27 +1,18 @@
 function year() {
-    const correctName = document.getElementById("glezna").value
-     let fullName = if (correctName == "Mākslinieka dārzs Živernī") {
-        const yes = "Pareizs nosaukums"
-    } else {
-        const no = "Nepareizs nosaukums"
+    const name = document.getElementById("glezna").value;
+    const correctName = name === "Mākslinieka dārzs Živernī";
+    const correctYear = document.getElementById("g10").checked;
+    const anyYear = correctYear || document.getElementById("g18").checked || document.getElementById("g14").checked;
+
+    if (!anyYear) {
+        document.getElementById("answer").innerHTML = "Tev nav norādīts gads";
+        return;
     }
-  let fullYear = if (document.getElementById("g10").checked) {
-        const yearYes = "Pareizais gads"
-    } else if (document.getElementById("g18").checked or document.getElementById("g14").checked) {
-        const yearNot = "Nepareizais gads"
-    } else {
-        document.getElementById("answer").innerHTML = "tev nav norādīts gads"
-    }
-let fullAnswer = if (fullName == yes && fullYear == yearYes){
-    return "Viss pareizi!"
-} else if(fullName == yes && fullYear == yearNot ){
-    return "Pareizs nosaukums, bet nepareizs gads."
-    }else if(fullName == no && fullYear == yearYes ){
-    return "Pareizs gads, bet nepareizs nosaukums."
-    }else{
-    return "Viss NEpareizi!"
-    }
-    document.getElementById("answer").innerHTML = fullAnswer
+
+    if (correctName && correctYear) {      document.getElementById("answer").innerHTML = "Viss pareizi!"}
+    else if (correctName && !correctYear) {document.getElementById("answer").innerHTML = "Pareizs nosaukums, bet nepareizs gads."}
+    else if (!correctName && correctYear) {document.getElementById("answer").innerHTML = "Pareizs gads, bet nepareizs nosaukums."}
+    else                                  {document.getElementById("answer").innerHTML = "Viss NEpareizi!"}
 }
 
 
