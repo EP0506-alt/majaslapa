@@ -37,7 +37,10 @@ header {
   align-items: center;
   padding: 0 32px;
 }
-
+.spacing{
+  display: flex;
+  justify-content: rigth
+}
 .header-nav {
   display: flex;
   align-items: center;
@@ -45,7 +48,6 @@ header {
 }
 
 .header-nav a {
-  justify-content: right;
   font-size: 14px;
   font-weight: 500;
   color: rgba(239, 234, 230, .72);
