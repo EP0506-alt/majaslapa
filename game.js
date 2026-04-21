@@ -23,7 +23,9 @@ function newGame() {
     document.getElementById('preview-img').src = IMAGE;
     buildPuzzle(src, d, size, dim);
   };
+  img.onerror = () => buildPuzzle(src, d, size, dim);
   img.src = IMAGE;
+  if (img.complete) img.onload();
 }
 
 function buildPuzzle(src, d, size, dim) {
@@ -97,7 +99,7 @@ function tryPlace(pieceId, row, col) {
   const size = ps();
 
   if (piece.dataset.boardRow !== undefined) {
-    const { boardRow: or, boardCol: oc } = piece.dataset;
+    const or = +piece.dataset.boardRow, oc = +piece.dataset.boardCol;
     grid[or][oc].filled = false;
     grid[or][oc].slot.classList.remove('filled');
   }
@@ -122,7 +124,7 @@ function returnToTray(pieceId) {
   const piece = document.getElementById(pieceId);
   if (!piece) return;
   if (piece.dataset.boardRow !== undefined) {
-    const { boardRow: r, boardCol: c } = piece.dataset;
+    const r = +piece.dataset.boardRow, c = +piece.dataset.boardCol;
     grid[r]?.[c] && (grid[r][c].filled = false, grid[r][c].slot.classList.remove('filled'));
     delete piece.dataset.boardRow; delete piece.dataset.boardCol;
     piece.classList.remove('correct');
