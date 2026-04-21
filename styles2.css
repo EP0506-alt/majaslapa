@@ -68,6 +68,7 @@ header {
   height: 200px;
   overflow: hidden;
   flex-shrink: 0;
+  margin-top: var(--header-h);
 }
 
 .top-content {
@@ -149,6 +150,17 @@ select:focus {
 
 .btn-primary:hover {
   background: var(--ash-brown);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ash-brown);
+  border: 1.5px solid var(--ash-brown);
+}
+
+.btn-secondary:hover {
+  background: var(--ash-brown);
+  color: var(--bg);
 }
 
 .stats {
