@@ -12,7 +12,9 @@ function year() {
     } else {
         const kl = "tev nav norādīts gads"
     }
-    document.getElementById("c").innerHTML = "Tev ir " + b + ". tavas krāsas kods ir " + i
+
+    
+    document.getElementById("answer").innerHTML = "Tev ir " + b + ". tavas krāsas kods ir " + i
 }
 
 
