@@ -26,9 +26,18 @@
       <p class="top-sub">Savieto visus gabaliņus, lai atjaunotu gleznu</p>
     </div>
   </div>
-
+<div>
+  <form>
+    <label>Uzraksti gleznas nosaukumu: </label>
+    <input type="text" id="gleznas">
+    <br>
+    <input type="radio" name="gads" id="g10">1900
+    <input type="radio" name="gads" id="g18">1898
+    <input type="radio" name="gads" id="g14">1904
+    <button type="button" onclick="p()">Pārbaudi</button>
+  </form>
+</div>
   <div class="toast" id="toast"></div>
-
   <div class="win-overlay" id="win-overlay">
     <div class="win-card">
       <div class="win-title">Glezna pabeigta!</div>
