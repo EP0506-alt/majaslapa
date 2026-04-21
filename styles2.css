@@ -34,6 +34,7 @@ header {
   height: var(--header-h);
   background-color: var(--ash-brown);
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 0 32px;
 }
