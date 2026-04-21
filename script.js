@@ -1,4 +1,3 @@
-// ── Quiz (game.html top section) ─────────────────────────────────────────────
 function year() {
   const name = document.getElementById('glezna').value.trim();
   const correctName = name === 'Mākslinieka dārzs Živernī';
