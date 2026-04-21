@@ -24,7 +24,7 @@
     <div class="top-content">
       <div>Minispēle</div>
       <p class="top-sub">Savieto visus gabaliņus, lai atjaunotu gleznu</p>
-      <div>
+       <div>
     <form>
     <label>Uzraksti gleznas nosaukumu: </label>
     <input type="text" id="gleznas">
@@ -36,12 +36,12 @@
   </form>
   <h2 id="answer"></h2>
   </div>
-  </div>
-  </div>
-
   
+    </div>
+  </div>
 
   <div class="toast" id="toast"></div>
+
   <div class="win-overlay" id="win-overlay">
     <div class="win-card">
       <div class="win-title">Glezna pabeigta!</div>
@@ -74,13 +74,17 @@
         <div class="stat-val" id="stat-moves">0</div>
         <div class="stat-lbl">Gājieni</div>
       </div>
+      <div class="stat">
+        <div class="stat-val" id="stat-total">0</div>
+        <div class="stat-lbl">Gabaliņi</div>
+      </div>
     </div>
 
     <div class="puzzle-area">
 
       <div class="preview-wrap">
         <div class="preview-label">Oriģināls</div>
-        <div id="preview"><img id="preview-img" src="240555.webp" alt="Mākslinieka dārzs Živernī" /></div>
+        <div id="preview"><img id="preview-img" src="" alt="Preview" /></div>
       </div>
 
       <div class="board-wrap">
@@ -96,7 +100,7 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="game.js"></script>
 </body>
 
 </html>
