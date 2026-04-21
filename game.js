@@ -1,20 +1,27 @@
 function year() {
     const correctName = document.getElementById("glezna").value
-      if (correctName == "Mākslinieka dārzs Živernī") {
+     let fullName = if (correctName == "Mākslinieka dārzs Živernī") {
         const yes = "Pareizs nosaukums"
     } else {
         const no = "Nepareizs nosaukums"
     }
-   if (document.getElementById("g10").checked) {
+  let fullYear = if (document.getElementById("g10").checked) {
         const yearYes = "Pareizais gads"
     } else if (document.getElementById("g18").checked or document.getElementById("g14").checked) {
         const yearNot = "Nepareizais gads"
     } else {
-        const kl = "tev nav norādīts gads"
+        document.getElementById("answer").innerHTML = "tev nav norādīts gads"
     }
-
-    
-    document.getElementById("answer").innerHTML = "Tev ir " + b + ". tavas krāsas kods ir " + i
+let fullAnswer = if (fullName == yes && fullYear == yearYes){
+    return "Viss pareizi!"
+} else if(fullName == yes && fullYear == yearNot ){
+    return "Pareizs nosaukums, bet nepareizs gads."
+    }else if(){
+    return "Pareizs gads, bet nepareizs nosaukums."
+    }else{
+    return "Viss NEpareizi!"
+    }
+    document.getElementById("answer").innerHTML = fullAnswer
 }
 
 
