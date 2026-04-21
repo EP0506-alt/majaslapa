@@ -16,7 +16,7 @@ let fullAnswer = if (fullName == yes && fullYear == yearYes){
     return "Viss pareizi!"
 } else if(fullName == yes && fullYear == yearNot ){
     return "Pareizs nosaukums, bet nepareizs gads."
-    }else if(){
+    }else if(fullName == no && fullYear == yearYes ){
     return "Pareizs gads, bet nepareizs nosaukums."
     }else{
     return "Viss NEpareizi!"
